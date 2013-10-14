@@ -1,0 +1,11 @@
+nav_1:
+  selection: welcome about_us gallery
+  default: welcome
+  prefix: main
+  namespace: front_end
+  controller: front_page
+nav_2:
+  selection: settings users misc
+  default: settings
+  namespace: back_end
+  controller: admin_panel

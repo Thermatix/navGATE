@@ -1,0 +1,44 @@
+= navGATE
+
+This gem is provided as is, please read through the intializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu
+
+==Building the menu
+
+When building the menu there are multiple options available, building the menu is done in  an initializer file in the configs directory.
+
+There are several options you can pass through, if you are building the menu with the object builder directly then two options must be present, those being 'selection' and 'controller', the rest are optional.
+
+===Options
+
+selection: This is used to build the menu options.
+There are two ways to use this, the first is to use an array of strings containing the menu options a person can select; the second is to pull from a database table, to do this pass a hash with the key being the name of the model and it's value being the field containing it's name
+
+default: This is used to give the menu a default selection for when the user has not selected anything. Pass a string containing the name of the defualt selection, if no string is passed then the first item from selection is used.
+
+prefix: This is used when you have a prefix before the target in the url, eg: if your links render out as "host.com/books" without a prefix; with a prefix of 'shelf' it will render out as "host.com/shelf/books". This is not for namespacing, for namespacing see the namespace option.
+
+namespace: This is used for when you have namespacing. It works like prefix however unlike prefix it will also search for the controller within the namespace unlike prefix which doesn't.
+
+controller: This is used to match the menu to a controller, when deciding which menu to render, it matches this attribute to the current controller. If you have namespacing, the 'namespace' options MUST be used before the 'controller' option otherwise it won't recognise the namespace
+
+by_id: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
+
+=== Using a yml file to build the menu
+There is also a third option to build the menu, you can use a structured yml file, there is an example yaml file in the config dirrectory called "build_menu.yml".
+when using this method you are unable to use a database model to create the menu.
+
+==Rendering the menu
+
+To render the menu use the provided helper "render_navigation(options)"
+options is a hash that is used to build any html options you might want such as
+class, it can also take two extra options, 'styling:' and 'wrap:'.
+
+===Options
+
+Styling: This is how the navigation can be styled it can either be ':verticle' or a character that you wish to use for spacing such as '|' or ':' and so on, it can only be verticle or a spaceing character.
+Wrap: This allows you to wrap each link in a html tag, wrap can itself take two differant options, either a string containing the tag's name (without "<>", only the tag name) or an Array containing the tag name and it's class.
+
+example:
+ render_navigation({"class" => "'nav button'",styling: :verticle, wrap: ['li','test']}) %>
+
+note: class has to be in "" due to it being a keyword in ruby.
