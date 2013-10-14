@@ -1,6 +1,8 @@
 = navGATE
 
-This gem is provided as is, please read through the intializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu
+This gem is provided as is, please read through the intializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu.
+
+This gem was built with Rails in mind.
 
 note: this is my first gem, I am still trying to set it up, so be carefull when downloading this.
 Also I've included the extra files needed to get it working in there respective directories, eg, the code in 'Applicationhelper' needs to go in 'Applicationhelper'.
