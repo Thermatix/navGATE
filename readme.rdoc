@@ -3,13 +3,16 @@
 This gem is provided as is, please read through the intializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu
 
 note: this is my first gem, I am still trying to set it up, so be carefull when downloading this.
-
-==Building the menu
+Also I've included the extra files needed to get it working in there respective directories, eg, the code in 'Applicationhelper' needs to go in 'Applicationhelper'.
+I've tried to to make it easy to install but I'm still not sure how to get those things into the right files automaticly, if some one could point me in the right direction, I'd be happy to make the needed changes.
+lastly the gem is up on rubygems.org
+==Building the menus
 
 When building the menu there are multiple options available, building the menu is done in  an initializer file in the configs directory.
 
 There are several options you can pass through, if you are building the menu with the object builder directly then two options must be present, those being 'selection' and 'controller', the rest are optional.
 
+Also note, you can pass multiple Navgate::builders as you need, just match them to there controllers and they should render properly.
 ===Options
 
 selection: This is used to build the menu options.
