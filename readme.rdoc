@@ -38,7 +38,7 @@ examples:
   end
 
 ===Building menu object from database fields
-be sure to pass it as {Model_name: field}
+Be sure to pass it as {model_name: :field}
 
   NAVGATE = Navgate.new do |build|
      build.navs = [ Navgate::Builder.new do |options|
@@ -56,10 +56,24 @@ There is also a third option to build the menu, you can use a structured yml fil
 when using this method you are unable to use a database model to create the menu.
 
 ===Building from yaml file,
-look through the yaml file in the example for an example on how to set it up
+Initializing the object:
   NAVGATE = Navgate.new do |build|
     build.navs = "#{Rails.root}/config/build_menu.yml"
   end
+The yaml file:
+  nav_1:
+    selection: welcome about_us gallery
+    default: welcome
+    prefix: main
+    namespace: front_end
+    controller: front_page
+  nav_2:
+    selection: settings users misc
+    default: settings
+    namespace: back_end
+    controller: admin_panel
+
+
 
 ==Rendering the menu
 
