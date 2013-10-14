@@ -25,9 +25,41 @@ controller: This is used to match the menu to a controller, when deciding which 
 
 by_id: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
 
+examples:
+
+===Building menu object from scratch
+  NAVGATE = Navgate.new do |build|
+    build.navs = [ Navgate::Builder.new do |options|
+            options[:selection] = %w(selection site_settings users images misc)
+            options[:namespace] = 'admin'
+            options[:controller] = 'admin_panel'
+          end
+    ]
+  end
+
+===Building menu object from database fields
+be sure to pass it as {Model_name: field}
+
+  NAVGATE = Navgate.new do |build|
+     build.navs = [ Navgate::Builder.new do |options|
+                    options[:selection] = {categories: :title }
+                    options[:prefix] = 'shop_category'
+                    options[:controller] = 'front_page'
+                    options[:by_id] = true
+                  end
+    ]
+  end
+
+
 === Using a yml file to build the menu
 There is also a third option to build the menu, you can use a structured yml file, there is an example yaml file in the config dirrectory called "build_menu.yml".
 when using this method you are unable to use a database model to create the menu.
+
+===Building from yaml file,
+look through the yaml file in the example for an example on how to set it up
+  NAVGATE = Navgate.new do |build|
+    build.navs = "#{Rails.root}/config/build_menu.yml"
+  end
 
 ==Rendering the menu
 
@@ -41,6 +73,6 @@ Styling: This is how the navigation can be styled it can either be ':verticle' o
 Wrap: This allows you to wrap each link in a html tag, wrap can itself take two differant options, either a string containing the tag's name (without "<>", only the tag name) or an Array containing the tag name and it's class.
 
 example:
- render_navigation({"class" => "'nav button'",styling: :verticle, wrap: ['li','test']}) %>
+  render_navigation({"class" => "'nav button'",styling: :verticle, wrap: ['li','test']}) %>
 
 note: class has to be in "" due to it being a keyword in ruby.
