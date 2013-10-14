@@ -28,9 +28,11 @@ by_id: This is used when you are using a database model to build the menu and yo
 examples:
 
 ===Building menu object from scratch
+The default option doesn't have to be the first in the selection list.
   NAVGATE = Navgate.new do |build|
     build.navs = [ Navgate::Builder.new do |options|
             options[:selection] = %w(selection site_settings users images misc)
+            options[:default] = 'users'
             options[:namespace] = 'admin'
             options[:controller] = 'admin_panel'
           end
