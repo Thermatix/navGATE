@@ -2,6 +2,8 @@
 
 This gem is provided as is, please read through the intializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu
 
+note: this is my first gem, I am still trying to set it up, so be carefull when downloading this.
+
 ==Building the menu
 
 When building the menu there are multiple options available, building the menu is done in  an initializer file in the configs directory.
