@@ -4,6 +4,7 @@ app/controller/application_controller.rb
 app/helpers/application_helper.rb
 config/build_menu.yml
 config/initializers/build_menu.rb
+init.rb
 lib/navgate.rb
 lib/navgate/base.rb
 navGATE.gemspec
