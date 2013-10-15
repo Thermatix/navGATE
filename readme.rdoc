@@ -5,8 +5,7 @@ This gem is provided as is, please read through the intializer file "build_menu.
 This gem was built with Rails in mind.
 
 note: this is my first gem, I am still trying to set it up, so be carefull when downloading this.
-Also I've included the extra files needed to get it working in there respective directories, eg, the code in 'Applicationhelper' needs to go in 'Applicationhelper'.
-I've tried to to make it easy to install but I'm still not sure how to get those things into the right files automaticly, if some one could point me in the right direction, I'd be happy to make the needed changes.
+
 lastly the gem is up on rubygems.org
 ==Building the menus
 
