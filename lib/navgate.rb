@@ -4,10 +4,10 @@ class Navgate
 
     def render_it_with(options)
       options_to_render = ""
+      options[:class] = self.css_class if self.css_class
       if options
         options.each do |key,value|
           options_to_render += ("#{key}=#{value}" + " ") unless ignoring key
-          options_to_render += ("class='#{self.css_class}") if self.css_class
         end
       end
       style = styling(options)
@@ -67,7 +67,7 @@ class Navgate
       end
 
       def ignoring k
-         [:styling,:wrap].include?(k) || ((k == "class") if self.css_class)
+         [:styling,:wrap].include?(k)
       end
 
   end

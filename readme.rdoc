@@ -97,7 +97,6 @@ Styling: This is how the navigation can be styled it can either be ':verticle' o
 Wrap: This allows you to wrap each link in a html tag, wrap can itself take two differant options, either a string containing the tag's name (without "<>", only the tag name) or an Array containing the tag name and it's class.
 
 example:
-  render_navigation({"class" => "'nav button'",styling: :verticle, wrap: ['li','test']}) %>
+  render_navigation({:class => "'nav button'", styling: :verticle, wrap: ['li','test']}) %>
 
-note: class has to be in "" due to it being a keyword in ruby.
-note: There is no point in passing a class here if you have one set when you first build the menu, it will just be ignored.
+note: There is no point in passing a class here if you have one set when you first build the menu, it will just be overridden.

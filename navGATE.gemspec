@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "navGATE"
-  s.version = "0.1.03"
+  s.version = "0.1.07"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Becker"]
