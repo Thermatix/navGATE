@@ -25,7 +25,7 @@ There are two ways to use this, the first is to use an array of strings containi
 
 <b>namespace</b>: This is used for when you have name spacing. It works like prefix however unlike prefix it will also search for the controller within the namespace unlike prefix, which doesn't.
 
-<b>controller<b>: This is used to match the menu to a controller, when deciding which menu to render, it matches this attribute to the current controller. If you have name spacing, the 'namespace' options <em>MUST</em> be used before the 'controller' option otherwise it won't recognize the namespace
+<b>controller</b>: This is used to match the menu to a controller, when deciding which menu to render, it matches this attribute to the current controller. If you have name spacing, the 'namespace' options <em>MUST</em> be used before the 'controller' option otherwise it won't recognize the namespace
 
 <b>by_id</b>: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
 
