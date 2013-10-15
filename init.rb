@@ -1,1 +1,1 @@
-require 'navgate'
+require 'lib/navgate'

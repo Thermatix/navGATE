@@ -1,13 +1,17 @@
 require 'navgate/base'
+require 'navgate/application_controller'
+require 'navgate/application_helper'
 class Navgate
   class Builder < Base
 
     def render_it_with(options)
       options_to_render = ""
-      options[:class] = self.css_class if self.css_class
+      options[:class] = "'#{self.css_class}'" if self.css_class
       if options
         options.each do |key,value|
+          ap value
           options_to_render += ("#{key}=#{value}" + " ") unless ignoring key
+          ap options_to_render
         end
       end
       style = styling(options)
