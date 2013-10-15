@@ -101,3 +101,25 @@ example:
 
 note: There is no point in passing a class here if you have one set when you first build the menu, it will just be overridden.
 
+==Using the selection to automatically render a matching partial
+
+naveGATE is set up so you can use it to render out a partial using <tt>@selected</tt>, to do this you have to pass a route param of <tt>:selection</tt>
+in the route, then you can use <tt><%= render @selected %></tt> to automatically select either the default selection or the current selection.
+
+That said you don't have use this feature, it will still route to whatever url you set up as a normal url, but <tt>@selected</tt> won't work without <tt>:selction</tt>
+example:
+
+routes.rb
+  get "/:selection", to: "front_page#index"
+  root to: "front_page#index"
+
+front_page/index.html.erb
+  <%= render @selected %>
+  
+resulting url
+  host.com/books
+  host.com/games
+  
+routes to the root but the paritals rendered would be respectively
+  _books.html.erb
+  _games.html.erb
