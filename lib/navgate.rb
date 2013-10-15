@@ -1,4 +1,4 @@
-require 'navgate/base'
+rendrequire 'navgate/base'
 require 'navgate/application_controller'
 require 'navgate/application_helper'
 class Navgate
@@ -111,6 +111,7 @@ class Navgate
 
   def select params
     nav = select_nav(params[:controller])
+    raise ArgumentError, "params[:selection] is blank or nil" if !params[:selection] || params[:selection].blank?
     return params[:selection] ? params[:selection] : nav.default
   end
   private
