@@ -64,7 +64,7 @@ class Navgate
 
       def styling options
         if options
-          return "<br>" if options[:styling] == :verticle
+          return "<br>" if options[:styling] == :vertical
           return options[:styling] if options[:styling]
         end
         " "

@@ -1,10 +1,10 @@
 = navGATE
 
-This gem is provided as is, please read through the intializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu.
+This gem is provided as is, please read through the initializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu.
 
 This gem was built with Rails in mind.
 
-note: this is my first gem, I am still trying to set it up, so be carefull when downloading this.
+note: this is my first gem, I am still trying to set it up, so be careful when downloading this.
 
 lastly the gem is up on rubygems.org
 ==Building the menus
@@ -16,20 +16,20 @@ There are several options you can pass through, if you are building the menu wit
 Also note, you can pass multiple Navgate::builders as you need, just match them to there controllers and they should render properly.
 ===Options
 
-selection: This is used to build the menu options.
+<b>selection</b>: This is used to build the menu options.
 There are two ways to use this, the first is to use an array of strings containing the menu options a person can select; the second is to pull from a database table, to do this pass a hash with the key being the name of the model and it's value being the field containing it's name
 
-default: This is used to give the menu a default selection for when the user has not selected anything. Pass a string containing the name of the defualt selection, if no string is passed then the first item from selection is used.
+<b>Default</b>: This is used to give the menu a default selection for when the user has not selected anything. Pass a string containing the name of the default selection, if no string is passed then the first item from selection is used.
 
-prefix: This is used when you have a prefix before the target in the url, eg: if your links render out as "host.com/books" without a prefix; with a prefix of 'shelf' it will render out as "host.com/shelf/books". This is not for namespacing, for namespacing see the namespace option.
+<b>prefix</b>: This is used when you have a prefix before the target in the URL, eg: if your links render out as "host.com/books" without a prefix; with a prefix of 'shelf' it will render out as "host.com/shelf/books". This is not for name spacing, for name spacing see the namespace option.
 
-namespace: This is used for when you have namespacing. It works like prefix however unlike prefix it will also search for the controller within the namespace unlike prefix which doesn't.
+<b>namespace</b>: This is used for when you have name spacing. It works like prefix however unlike prefix it will also search for the controller within the namespace unlike prefix, which doesn't.
 
-controller: This is used to match the menu to a controller, when deciding which menu to render, it matches this attribute to the current controller. If you have namespacing, the 'namespace' options MUST be used before the 'controller' option otherwise it won't recognise the namespace
+<b>controller<b>: This is used to match the menu to a controller, when deciding which menu to render, it matches this attribute to the current controller. If you have name spacing, the 'namespace' options <em>MUST</em> be used before the 'controller' option otherwise it won't recognize the namespace
 
-by_id: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
+<b>by_id</b>: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
 
-css_class: This is used when you want to hard code the CSS class selector into the menu rather then from the view
+<b>css_class</b>: This is used when you want to hard code the CSS class selector into the menu rather then from the view
 
 examples:
 
@@ -61,7 +61,7 @@ Be sure to pass it as {model_name: :field}
 
 
 === Using a yml file to build the menu
-There is also a third option to build the menu, you can use a structured yml file, there is an example yaml file in the config dirrectory called "build_menu.yml".
+There is also a third option to build the menu, you can use a structured yml file, there is an example yaml file in the config directory called "build_menu.yml".
 when using this method you are unable to use a database model to create the menu.
 
 ===Building from yaml file,
@@ -86,16 +86,18 @@ The yaml file:
 
 ==Rendering the menu
 
-To render the menu use the provided helper "render_navigation(options)"
+To render the menu use the provided helper <tt>render_navigation(options)</tt>;
 options is a hash that is used to build any html options you might want such as
-class, it can also take two extra options, 'styling:' and 'wrap:'.
+'class='some_css_class', it can also take two extra options, 'styling:' and 'wrap:'.
 
 ===Options
 
-Styling: This is how the navigation can be styled it can either be ':verticle' or a character that you wish to use for spacing such as '|' or ':' and so on, it can only be verticle or a spaceing character.
+Styling: This is how the navigation can be styled, it can either be ':vertical’ or a character that you wish to use for spacing such as '|' or ':' and so on, it can only be vertical or a spacing character.
+
 Wrap: This allows you to wrap each link in a html tag, wrap can itself take two differant options, either a string containing the tag's name (without "<>", only the tag name) or an Array containing the tag name and it's class.
 
 example:
-  render_navigation({:class => "'nav button'", styling: :verticle, wrap: ['li','test']}) %>
+  render_navigation({:class => "'nav button'", styling: :vertical, wrap: ['li','test']}) %>
 
 note: There is no point in passing a class here if you have one set when you first build the menu, it will just be overridden.
+
