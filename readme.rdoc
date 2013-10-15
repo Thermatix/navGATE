@@ -58,7 +58,25 @@ Be sure to pass it as {model_name: :field}
                   end
     ]
   end
+===Building multiple menus
 
+  NAVGATE = Navgate.new do |build|
+    build.navs = [ 
+          Navgate::Builder.new do |options|
+            options[:selection] = %w(selection site_settings users images misc)
+            options[:default] = 'users'
+            options[:namespace] = 'admin'
+            options[:controller] = 'admin_panel'
+            options[:css_class] = 'nav button'
+          end,
+          Navgate::Builder.new do |options|
+            options[:selection] = %w(welcome about_us gallery news)
+            options[:default] = 'news'
+            options[:controller] = 'front_page'
+            options[:css_class] = 'nav button'
+          end
+    ]
+  end
 
 === Using a yml file to build the menu
 There is also a third option to build the menu, you can use a structured yml file, there is an example yaml file in the config directory called "build_menu.yml".
