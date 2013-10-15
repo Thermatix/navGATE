@@ -7,6 +7,7 @@ class Navgate
       if options
         options.each do |key,value|
           options_to_render += ("#{key}=#{value}" + " ") unless ignoring key
+          options_to_render += ("class='#{self.css_class}") if self.css_class
         end
       end
       style = styling(options)
@@ -14,18 +15,20 @@ class Navgate
       if !self.by_id
         self.selection.each do |select|
           wrap_with options[:wrap] do
-            @text_to_render += "<a href=\"#{path_for(select)}\" #{options_to_render}>#{select}</a>#{style}"
+            @text_to_render += "<a href=\"#{path_for(select)}\" #{options_to_render}>#{select.gsub('_'," ")}</a>#{style}"
           end
         end
       else
         self.selection.each_with_index do |select,i|
           wrap_with options[:wrap] do
-            @text_to_render += "<a href=\"#{path_for(self.by_id[i])}\" #{options_to_render}>#{select}</a>#{style}"
+            @text_to_render += "<a href=\"#{path_for(self.by_id[i])}\" #{options_to_render}>#{select.gsub('_'," ")}</a>#{style}"
           end
         end
       end
       @text_to_render
     end
+
+
 
     private
       def wrap_with tag, &block
@@ -44,8 +47,6 @@ class Navgate
           yield
         end
       end
-
-
 
       def path_for link_to
         if self.namespace
@@ -66,7 +67,7 @@ class Navgate
       end
 
       def ignoring k
-         [:styling,:wrap].include?(k)
+         [:styling,:wrap].include?(k) || ((k == "class") if self.css_class)
       end
 
   end

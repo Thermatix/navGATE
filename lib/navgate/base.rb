@@ -1,8 +1,8 @@
 class Base
-  attr_accessor :selection, :default, :namespace, :controller, :prefix, :by_id
+  attr_accessor :selection, :default, :namespace, :controller, :prefix, :by_id, :css_class
 
   def initialize(&block)
-    options = {selection: nil,default: nil, controller: nil, namespace: nil}
+    options = {selection: nil,default: nil, controller: nil, namespace: nil, css_class: nil}
     yield(options)
     self.selection = pull_data(options[:selection])
     self.default = options[:default] || self.selection.first
@@ -10,6 +10,7 @@ class Base
     self.prefix = options[:prefix]
     self.controller = "#{namespace?}#{options[:controller]}"
     self.by_id = pull_data({options[:selection].to_a.first.first => :id }) if options[:by_id]
+    self.css_class = options[:css_class]
   end
   private
     def namespace?

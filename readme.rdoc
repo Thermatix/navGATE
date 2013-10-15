@@ -30,6 +30,8 @@ controller: This is used to match the menu to a controller, when deciding which 
 
 by_id: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
 
+css_class: This is used when you want to hard code the CSS class selector into the menu rather then from the view
+
 examples:
 
 ===Building menu object from scratch
@@ -40,6 +42,7 @@ The default option doesn't have to be the first in the selection list.
             options[:default] = 'users'
             options[:namespace] = 'admin'
             options[:controller] = 'admin_panel'
+            options[:css_class] = 'nav button'
           end
     ]
   end
@@ -97,3 +100,4 @@ example:
   render_navigation({"class" => "'nav button'",styling: :verticle, wrap: ['li','test']}) %>
 
 note: class has to be in "" due to it being a keyword in ruby.
+note: There is no point in passing a class here if you have one set when you first build the menu, it will just be ignored.

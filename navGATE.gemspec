@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = "navGATE"
-  s.version = "0.1.02"
+  s.version = "0.1.03"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Martin Becker"]
-  s.date = "2013-10-14"
+  s.date = "2013-10-15"
   s.description = "Allows the easy creation of menus with config files"
   s.email = "mbeckerwork@gmail.com"
   s.extra_rdoc_files = ["lib/navgate.rb", "lib/navgate/base.rb"]
