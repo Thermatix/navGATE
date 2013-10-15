@@ -1,6 +1,5 @@
 require 'navgate/base'
 require 'navgate/application_controller'
-require 'navgate/application_helper'
 class Navgate
   class Builder < Base
 
