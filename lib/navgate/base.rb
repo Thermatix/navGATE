@@ -1,5 +1,5 @@
 class Base
-  attr_accessor :selection, :default, :namespace, :controller, :prefix, :by_id, :css_class
+  attr_accessor :selection, :default, :namespace, :prefix, :controller,  :by_id, :css_class
 
   def initialize(&block)
     options = {selection: nil,default: nil, controller: nil, namespace: nil, css_class: nil}

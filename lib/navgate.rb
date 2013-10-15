@@ -94,6 +94,8 @@ class Navgate
                     options[:namespace] = menu[1]['namespace'] || nil
                     options[:prefix] = menu[1]['prefix'] || nil
                     options[:controller] = menu[1]['controller'] || nil
+                    options[:by_id] = menu[1]['by_id'] || nil
+                    options[:css_class] = menu[1]['css_class'] || nil
                   end
                 )
       end
