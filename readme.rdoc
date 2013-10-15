@@ -4,7 +4,7 @@ This gem is provided as is, please read through the initializer file "build_menu
 
 This gem was built with Rails in mind.
 
-note: this is my first gem, I am still trying to set it up, so be careful when downloading this.
+note: this is my first gem.
 
 lastly the gem is up on rubygems.org
 ==Building the menus
