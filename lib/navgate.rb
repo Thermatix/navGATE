@@ -116,7 +116,8 @@ class Navgate
   private
     def select_nav controller
       self.navs.each do |nav|
-          return nav if nav.controller == controller
+          (return nav if nav.controller == controller) if nav.controller.is_a?(String)
+          return nav if nav.controller.include?(controller)
       end
     end
 

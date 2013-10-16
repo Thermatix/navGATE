@@ -2,6 +2,10 @@
 
 This gem is provided as is, please read through the initializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu.
 
+This gem allows for the ease of navigation building, from preset lists, from active model databases (eg, categories), from yaml files; but it's not just
+for the ease of use it's also that you can have multiple navigation menus for differant controllers, or the same menu for differant controllers.
+Whatever you want is up to you.
+
 This gem was built with Rails in mind.
 
 note: this is my first gem.
@@ -47,13 +51,14 @@ The default option doesn't have to be the first in the selection list.
   end
 
 ===Building menu object from database fields
-Be sure to pass it as {model_name: :field}
+Be sure to pass it as {model_name: :field}.
+Also note you can pass an array of controllers as well as just a string of one controller which in this case is done via a split command, %w() also works
 
   NAVGATE = Navgate.new do |build|
      build.navs = [ Navgate::Builder.new do |options|
                     options[:selection] = {categories: :title }
                     options[:prefix] = 'shop_category'
-                    options[:controller] = 'front_page'
+                    options[:controller] = "front_page side_page about_page".split(" ")
                     options[:by_id] = true
                   end
     ]
@@ -61,7 +66,7 @@ Be sure to pass it as {model_name: :field}
 ===Building multiple menus
 
   NAVGATE = Navgate.new do |build|
-    build.navs = [ 
+    build.navs = [
           Navgate::Builder.new do |options|
             options[:selection] = %w(selection site_settings users images misc)
             options[:default] = 'users'
@@ -134,11 +139,11 @@ routes.rb
 
 front_page/index.html.erb
   <%= render @selected %>
-  
+
 resulting url
   host.com/books
   host.com/games
-  
+
 routes to the root but the paritals rendered would be respectively
   _books.html.erb
   _games.html.erb
