@@ -25,11 +25,9 @@ There are two ways to use this, the first is to use an array of strings containi
 
 <b>Default</b>: This is used to give the menu a default selection for when the user has not selected anything. Pass a string containing the name of the default selection, if no string is passed then the first item from selection is used.
 
-<b>prefix</b>: This is used when you have a prefix before the target in the URL, eg: if your links render out as "host.com/books" without a prefix; with a prefix of 'shelf' it will render out as "host.com/shelf/books". This is not for name spacing, for name spacing see the namespace option.
+<b>prefix</b>: This is used when you have a prefix before the target in the URL, eg: if your links render out as "host.com/books" without a prefix; with a prefix of 'shelf' it will render out as "host.com/shelf/books". Namespacing is ignored within this gem, it only looks at the controller's name and nothing else when controller mathing.
 
-<b>namespace</b>: This is used for when you have name spacing. It works like prefix however unlike prefix it will also search for the controller within the namespace unlike prefix, which doesn't.
-
-<b>controller</b>: This is used to match the menu to a controller, when deciding which menu to render, it can also be an array of strings; it matches this attribute to the current controller. If you have name spacing, the 'namespace' option <em>MUST</em> be used before the 'controller' option otherwise it won't recognize the namespace
+<b>controller</b>: This is used to match the menu to a controller, when deciding which menu to render, it can also be an array of strings; it matches this attribute to the current controller.
 
 <b>by_id</b>: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
 
@@ -43,7 +41,7 @@ The default option doesn't have to be the first in the selection list.
     build.navs = [ Navgate::Builder.new do |options|
             options[:selection] = %w(selection site_settings users images misc)
             options[:default] = 'users'
-            options[:namespace] = 'admin'
+            options[:prefix] = = 'admin'
             options[:controller] = 'admin_panel'
             options[:css_class] = 'nav button'
           end
@@ -70,7 +68,7 @@ Also note you can pass an array of controllers as well as just a string of one c
           Navgate::Builder.new do |options|
             options[:selection] = %w(selection site_settings users images misc)
             options[:default] = 'users'
-            options[:namespace] = 'admin'
+            options[:prefix] = = 'admin'
             options[:controller] = 'admin_panel'
             options[:css_class] = 'nav button'
           end,
@@ -97,12 +95,11 @@ The yaml file:
     selection: welcome about_us gallery
     default: welcome
     prefix: main
-    namespace: front_end
     controller: front_page
   nav_2:
     selection: settings users misc
     default: settings
-    namespace: back_end
+    preix: back_end
     controller: admin_panel
 
 

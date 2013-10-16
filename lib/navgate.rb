@@ -52,9 +52,7 @@ class Navgate
       end
 
       def path_for link_to
-        if self.namespace
-          return "/#{self.namespace}/#{link_to}"
-        elsif self.prefix
+        if self.prefix
           return "/#{self.prefix}/#{link_to}"
         else
           return "/#{link_to}"
@@ -90,7 +88,6 @@ class Navgate
         temp.push(Navgate::Builder.new do |options|
                     options[:selection] = menu[1]['selection'].split(" ")
                     options[:default] = menu[1]['default'] || nill
-                    options[:namespace] = menu[1]['namespace'] || nil
                     options[:prefix] = menu[1]['prefix'] || nil
                     options[:controller] = menu[1]['controller'] || nil
                     options[:by_id] = menu[1]['by_id'] || nil
@@ -116,8 +113,15 @@ class Navgate
   private
     def select_nav controller
       self.navs.each do |nav|
-          (return nav if nav.controller == controller) if nav.controller.is_a?(String)
-          return nav if nav.controller.include?(controller)
+        case nav.controller
+          when is_a?(String)
+            return nav if (nav.controller) == controller.split('/').last
+          when is_a?(Array)
+            return nav if nav.controller.include?(controller.split('/').last)
+          else
+            raise TypeError, "expecting nav.controller to be a string or an array, got #{nav.controller.class} "
+          end
+
       end
     end
 
