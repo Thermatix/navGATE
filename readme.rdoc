@@ -1,6 +1,6 @@
 = navGATE
 
-This gem is provided as is, please read through the initializer file "build_menu.rb" for examples on how you can use this gem to build a nav menu.
+This gem is provided as is.
 
 This gem allows for the ease of navigation building, from preset lists, from active model databases (eg, categories), from yaml files; but it's not just
 for the ease of use it's also that you can have multiple navigation menus for differant controllers, or the same menu for differant controllers.
