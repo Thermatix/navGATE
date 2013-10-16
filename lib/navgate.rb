@@ -113,15 +113,13 @@ class Navgate
   private
     def select_nav controller
       self.navs.each do |nav|
-        case nav.controller
-          when is_a?(String)
+          if nav.controller.is_a?(String)
             return nav if (nav.controller) == controller.split('/').last
-          when is_a?(Array)
+          elsif nav.controller.is_a?(Array)
             return nav if nav.controller.include?(controller.split('/').last)
           else
-            raise TypeError, "expecting nav.controller to be a string or an array, got #{nav.controller.class} "
+            raise TypeError, "expecting nav.controller to be a String or an Array, got #{nav.controller.class} "
           end
-
       end
     end
 
