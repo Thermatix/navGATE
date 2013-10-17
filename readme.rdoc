@@ -17,11 +17,11 @@ in the Application controller you have to <tt> include NavGateHelpers </tt> firs
 
 You next have to add a before_filter and helper method to the application controller
 
-just add
+Just add:
   helper_method :render_navigation
   before_filter :make_menu
 
-to your list of filters and helper methods in the application controller, thats it, you can now use the helper method and the gem to build the navigations
+To your list of filters and helper methods in the application controller, thats it, you can now use the helper method and the gem to build your navigations.
 
 ==Building the menus
 
