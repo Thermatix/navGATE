@@ -1,7 +1,4 @@
-
-class ApplicationController < ActionController::Base
-  before_filter :make_menu
-  helper_method :render_navigation
+module NavGateHelpers
   def make_menu
     @navgate = NAVGATE
     @selected ||= @navgate.select(params) if params[:selection]
@@ -9,5 +6,6 @@ class ApplicationController < ActionController::Base
   def render_navigation options = nil
     @navgate.render_nav(params, options)
   end
+
 end
 
