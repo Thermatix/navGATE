@@ -100,24 +100,30 @@ class Navgate
 
 
   def render_nav params, options
-    select_nav(params[:controller]).render_it_with(options).html_safe
+    nav = select_nav(params[:controller].split('/').last).render_it_with(options).html_safe
+    ap nav.inspect
+    nav
   end
 
   def select params
-    nav = select_nav(params[:controller])
-    raise ArgumentError, "params[:selection] is blank or nil" if !params[:selection] || params[:selection].blank?
-    return params[:selection] ? params[:selection] : nav.default
+
+    if params[:selection]
+      return params[:selection]
+    else
+      return select_nav(params[:controller]).default.to_s
+    end
   end
   private
     def select_nav controller
       self.navs.each do |nav|
-          if nav.controller.is_a?(String)
-            return nav if (nav.controller) == controller.split('/').last
-          elsif nav.controller.is_a?(Array)
-            return nav if nav.controller.include?(controller.split('/').last)
-          else
-            raise TypeError, "expecting nav.controller to be a String or an Array, got #{nav.controller.class} "
-          end
+        if nav.controller.is_a?(String)
+          ap nav.inspect
+          return nav if (nav.controller) == controller.split('/').last
+        elsif nav.controller.is_a?(Array)
+          return nav if nav.controller.include?(controller)
+        else
+          raise TypeError, "expecting nav.controller to be a String or an Array, got #{nav.controller.class} "
+        end
       end
     end
 
