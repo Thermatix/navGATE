@@ -1,8 +1,8 @@
 class Base
-  attr_accessor :selection, :default, :prefix, :controller,  :by_id, :css_class
+  attr_accessor :selection, :default, :prefix, :controller,  :by_id, :css_class, :css_selected
 
   def initialize(&block)
-    options = {selection: nil,default: nil, controller: nil, css_class: nil}
+    options = {selection: nil,default: nil, controller: nil, css_class: nil, css_selected: nil}
     yield(options)
     self.selection = pull_data(options[:selection])
     self.default = options[:default] || self.selection.first
@@ -10,6 +10,7 @@ class Base
     self.controller = options[:controller]
     self.by_id = pull_data({options[:selection].to_a.first.first => :id }) if options[:by_id]
     self.css_class = options[:css_class]
+    self.css_selected = options[:css_selected]
   end
   private
     def pull_data selection

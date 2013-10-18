@@ -12,9 +12,10 @@ note: this is my first gem.
 
 lastly the gem is up on rubygems.org
 
-==setup
+==Setup
 in the Application controller you have to <tt> include NavGateHelpers </tt> first.
 
+===For Rails
 You next have to add a before_filter and helper method to the application controller
 
 Just add:
@@ -22,6 +23,15 @@ Just add:
   before_filter :make_menu
 
 To your list of filters and helper methods in the application controller, thats it, you can now use the helper method and the gem to build your navigations.
+==For non Rails
+For non rails version of NavGATE the helpers change, instead they work like so:
+
+  make_menu(selection, controller)
+
+  render_navigation(selection, controller, options = nil)
+
+You have to pass the controller (or page it matches) and the current selection,
+in rails they would pass automatically as <tt> params[:controller] </tt> and <tt> params[:selection] </tt> respecivly (selection being the currenty selected nav item).
 
 ==Building the menus
 
@@ -43,7 +53,9 @@ There are two ways to use this, the first is to use an array of strings containi
 
 <b>by_id</b>: This is used when you are using a database model to build the menu and you want to link with IDs rather then the selection list. To use it simply set it to true.
 
-<b>css_class</b>: This is used when you want to hard code the CSS class selector into the menu rather then from the view
+<b>css_class</b>: This is used when you want to hard code the CSS class selector into the menu rather then from the view.
+
+<b>css_selected</b>: the css overide for the selected thats currently selected. if no overide is passed then the link is simply not rendered out, as with css_class it overides the one passed in the view, but only for the selected link
 
 examples:
 
@@ -157,3 +169,4 @@ resulting url
 routes to the root but the paritals rendered would be respectively
   _books.html.erb
   _games.html.erb
+
