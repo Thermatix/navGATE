@@ -76,9 +76,9 @@ class Navgate
 
       def path_for link_to
         if self.prefix
-          return "/#{self.prefix}/#{link_to}"
+          return "/#{self.prefix}/#{link_to.downcase}"
         else
-          return "/#{link_to}"
+          return "/#{link_to.downcase}"
         end
       end
 
@@ -125,7 +125,7 @@ class Navgate
 
 
   def render_nav selection, controller, options
-    nav = select_nav(controller.split('/').last).render_it_with(options,selection).html_safe
+    nav = nav_cache(controller.split('/').last).render_it_with(options,selection).html_safe
     nav
   end
 
@@ -133,20 +133,37 @@ class Navgate
     if selection
       return selection
     else
-      return select_nav(controller).default.to_s
+      return nav_cache(controller.split('/').last).default.to_s
     end
   end
   private
+
+    def nav_cache controller
+      if @selected_nav
+        if @selected_nav.controller.is_a?(Array)
+          return @selected_nav if @selected_nav.controller.include?(controller)
+        else
+          return @selected_nav unless @selected_nav.controller != controller
+        end
+        @selected_nav = nil
+        nav_cache(controller)
+      else
+        @selected_nav ||= select_nav(controller)
+      end
+    end
+
     def select_nav controller
+      nav_to_return = nil
       self.navs.each do |nav|
         if nav.controller.is_a?(String)
-          return nav if (nav.controller) == controller.split('/').last
+          nav_to_return = nav if (nav.controller) == controller
         elsif nav.controller.is_a?(Array)
-          return nav if nav.controller.include?(controller)
+          nav_to_return = nav if nav.controller.include?(controller)
         else
           raise TypeError, "expecting nav.controller to be a String or an Array, got #{nav.controller.class} "
         end
       end
+      nav_to_return ?  (return nav_to_return) : (raise ArgumentError, "No matching controllers for #{controller}")
     end
 
     def not_bad_type? navs
