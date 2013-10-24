@@ -96,7 +96,7 @@ class Navgate
 
   end
 
-  attr_accessor :controllers, :navs
+  attr_accessor :controllers, :navs, :ignoring
 
   def initialize
     self.controllers = Rails.application.routes.routes.map do |route|
@@ -125,17 +125,26 @@ class Navgate
 
 
   def render_nav selection, controller, options
-    nav = nav_cache(controller.split('/').last).render_it_with(options,selection).html_safe
-    nav
+    if ignoring.include?(selection)
+      nav = nav_cache(controller.split('/').last).render_it_with(options,selection).html_safe
+      nav
+    else
+      nil
+    end
   end
 
   def select selection, controller
-    if selection
-      return selection
+    if ignoring.include?(selection)
+      if selection
+         selection
+      else
+         nav_cache(controller.split('/').last).default.to_s
+      end
     else
-      return nav_cache(controller.split('/').last).default.to_s
+       nil
     end
   end
+
   private
 
     def nav_cache controller
