@@ -1,5 +1,6 @@
 require 'navgate/base'
 require 'navgate/navgatehelpers'
+require 'awesome_print'
 class Navgate
   class Builder < Base
 
@@ -120,12 +121,13 @@ class Navgate
       end
       self.navs = temp
     end
+    self.ignoring ||= [""]
   end
 
 
 
   def render_nav selection, controller, options
-    if ignoring.include?(selection)
+    if !ignoring.include?(selection)
       nav = nav_cache(controller.split('/').last).render_it_with(options,selection).html_safe
       nav
     else
@@ -134,7 +136,7 @@ class Navgate
   end
 
   def select selection, controller
-    if ignoring.include?(selection)
+    if !ignoring.include?(selection)
       if selection
          selection
       else

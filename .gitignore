@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 /test
-
+/lib/*.rdoc
 *.gem
