@@ -1,3 +1,4 @@
+LICENCE/GPL-2
 Manifest
 Rakefile
 config/build_menu.yml
@@ -8,3 +9,4 @@ lib/navgate/base.rb
 lib/navgate/navgatehelpers.rb
 lib/readme.rdoc
 navGATE.gemspec
+readme.rdoc

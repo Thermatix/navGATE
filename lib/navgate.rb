@@ -126,24 +126,28 @@ class Navgate
 
 
 
-  def render_nav selection, controller, options
-    if !ignoring.include?(selection)
-      nav = nav_cache(controller.split('/').last).render_it_with(options,selection).html_safe
-      nav
+
+
+  def select selection, controller
+    split_controller = controller.split('/').last
+    if selection
+       selection
     else
-      nil
+      if ignoring.include?(split_controller)
+        nil
+      else
+       nav_cache(split_controller).default.to_s
+       end
     end
   end
 
-  def select selection, controller
-    if !ignoring.include?(selection)
-      if selection
-         selection
-      else
-         nav_cache(controller.split('/').last).default.to_s
-      end
+  def render_nav selection, controller, options
+    split_controller = controller.split('/').last
+    if ignoring.include?(split_controller)
+      nil
     else
-       nil
+      nav = nav_cache(split_controller).render_it_with(options,selection).html_safe
+      nav
     end
   end
 
