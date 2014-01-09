@@ -38,7 +38,7 @@ When building the menu there are multiple options available, building the menu i
 
 There are several options you can pass through, if you are building the menu with the object builder directly then two options must be present, those being 'selection' and 'controller', the rest are optional.
 
-Also note, you can pass multiple Navgate::builders as you need, just match them to there controllers and they should render properly.
+Also note, you can pass multiple <tt> NavGate::builders </tt> as you need, just match them to there controllers and they should render properly.
 ===Options
 
 <b>selection</b>: This is used to build the menu options.
@@ -60,8 +60,8 @@ examples:
 
 ===Building menu object from scratch
 The default option doesn't have to be the first in the selection list.
-  NAVGATE = Navgate.new do |build|
-    build.navs = [ Navgate::Builder.new do |options|
+  NavGate.configure do |build|
+    build.navs = [ NavGate::Builder.new do |options|
             options[:selection] = %w(selection site_settings users images misc)
             options[:default] = 'users'
             options[:prefix] = = 'admin'
@@ -75,8 +75,8 @@ The default option doesn't have to be the first in the selection list.
 Be sure to pass it as {model_name: :field}.
 Also note you can pass an array of controllers as well as just a string of one controller which in this case is done via a split command, %w() also works
 
-  NAVGATE = Navgate.new do |build|
-     build.navs = [ Navgate::Builder.new do |options|
+  NavGate.configure do |build|
+     build.navs = [ NavGate::Builder.new do |options|
                     options[:selection] = {categories: :title }
                     options[:prefix] = 'shop_category'
                     options[:controller] = "front_page side_page about_page".split(" ")
@@ -86,16 +86,16 @@ Also note you can pass an array of controllers as well as just a string of one c
   end
 ===Building multiple menus
 
-  NAVGATE = Navgate.new do |build|
+  NavGate.configure do |build|
     build.navs = [
-          Navgate::Builder.new do |options|
+          NavGate::Builder.new do |options|
             options[:selection] = %w(selection site_settings users images misc)
             options[:default] = 'users'
             options[:prefix] = = 'admin'
             options[:controller] = 'admin_panel'
             options[:css_class] = 'nav button'
           end,
-          Navgate::Builder.new do |options|
+          NavGate::Builder.new do |options|
             options[:selection] = %w(welcome about_us gallery news)
             options[:default] = 'news'
             options[:controller] = 'front_page'
@@ -110,9 +110,10 @@ when using this method you are unable to use a database model to create the menu
 
 ===Building from yaml file,
 Initializing the object:
-  NAVGATE = Navgate.new do |build|
+  NavGate.configure do |build|
     build.navs = "#{Rails.root}/config/build_menu.yml"
   end
+
 The yaml file:
   nav_1:
     selection: welcome about_us gallery
