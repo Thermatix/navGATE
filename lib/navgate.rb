@@ -10,7 +10,7 @@ module NavGate
   end
 
   def self.configure
-    self.configuration ||= Congiruration.new
+    self.configuration ||= Configuration.new
     yield(configuration)
     self.configuration.post_setup
   end
