@@ -1,10 +1,6 @@
 module NavGate
   class Navigation
-
-
-
-    def select selection, controller
-
+    def self.select selection, controller
       split_controller = controller.split('/').last
       if selection
          selection
@@ -17,9 +13,7 @@ module NavGate
       end
     end
 
-
-
-    def render_nav selection, controller, options
+    def self.render_nav selection, controller, options
       split_controller = controller.split('/').last
       if config.ignoring.include?(split_controller)
         nil
@@ -31,11 +25,11 @@ module NavGate
 
     private
 
-      def config
+      def self.config
         NavGate.configuration
       end
 
-      def nav_cache controller
+      def self.nav_cache controller
         if @selected_nav
           if @selected_nav.controller.is_a?(Array)
             return @selected_nav if @selected_nav.controller.include?(controller)
@@ -49,7 +43,7 @@ module NavGate
         end
       end
 
-      def select_nav controller
+      def self.select_nav controller
         nav_to_return = nil
         config.navs.each do |nav|
           if nav.controller.is_a?(String)

@@ -1,7 +1,7 @@
 Dir[File.dirname(__FILE__) + '/navgate/modules/*.rb'].each {|file| require file }
 require 'navgate/base'
 require 'navgate/builder'
-require 'awesome_print'
+require 'navgate/main'
 
 module NavGate
 

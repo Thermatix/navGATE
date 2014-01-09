@@ -3,7 +3,7 @@ require 'rake'
 require 'echoe'
 
 
-Echoe.new('navGATE','0.1.3.2') do |p|
+Echoe.new('navGATE','0.1.3.3') do |p|
   p.summary = "Allows the easy creation of navigation with config files"
   p.description = "Can create navigation from objects using the nav builder,from database tables or from a yaml file"
   p.url = "https://github.com/Thermatix/navGATE"
