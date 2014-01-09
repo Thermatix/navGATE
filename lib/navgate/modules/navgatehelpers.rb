@@ -4,7 +4,7 @@ module NavGate
       if Module.const_get("Rails").is_a?(Module).inspect
         #with rails
         def make_menu
-          @navgate = NAVGATE
+          @navgate = NavGate::Navigation
           @selected ||= @navgate.select(params[:selection], params[:controller])
         end
         def render_navigation options = nil
@@ -13,7 +13,7 @@ module NavGate
       else
         #without rails
         def make_menu selection, controller
-          @navgate = NAVGATE
+          @navgate = NavGate::Navigation
           @selected ||= @navgate.select(selection, controller)
         end
         def render_navigation controller, options = nil

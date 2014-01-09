@@ -12,7 +12,7 @@ This gem was built with Rails in mind.
 lastly the gem is up on rubygems.org
 
 ==Setup
-in the Application controller you have to <tt> include NavGateHelpers </tt> first.
+in the Application controller you have to <tt> include NavGate::NavGateHelpers </tt> first.
 
 ===For Rails
 You next have to add a before_filter and helper method to the application controller

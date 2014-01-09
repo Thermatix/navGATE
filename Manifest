@@ -9,7 +9,6 @@ lib/navgate/base.rb
 lib/navgate/builder.rb
 lib/navgate/main.rb
 lib/navgate/modules/navgatehelpers.rb
-lib/navgate/navgatehelpers.rb
 lib/readme.rdoc
 navGATE.gemspec
 readme.rdoc
